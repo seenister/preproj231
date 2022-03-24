@@ -14,7 +14,6 @@ import javax.validation.Valid;
 @RequestMapping("/users")
 public class UserController {
 
-
     private final UserService userService;
 
     @Autowired
@@ -22,7 +21,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/users")
+    @GetMapping()
     public String index(Model model) {
         //Получаем из DAO, передаем в отображение в представление
         model.addAttribute("users", userService.getAllUsers());
@@ -33,7 +32,7 @@ public class UserController {
     public String show(@PathVariable("id") int id, Model model) {
         //Получаем из DAO, передаем в отображение в представление
         model.addAttribute("user", userService.show(id));
-        return null;
+        return "users/show";
     }
 
     @GetMapping("/new")
@@ -61,7 +60,7 @@ public String newPerson(@ModelAttribute("user") User user) {
     public String update(@ModelAttribute("user") @Valid User user, BindingResult bindingResult,
                          @PathVariable("id") int id){
         if (bindingResult.hasErrors())
-    return "users/edit";
+            return "users/edit";
 
         userService.update(id, user);
         return "redirect:/users";

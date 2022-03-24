@@ -1,27 +1,24 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>Edit user</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
 
-<form th:method="Post" th:action="@{/users/{id}(id=${user.getId()})}" th:object=${user}">/form>
+
+<form th:method="Post" th:action="@{/users/${user.getId()}}" th:object="${user}">
     <label for="name"> Enter name: </label>
     <input type="text" th:field="*{name}" id="name"/>
     <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
-    <br/>
-    <label for="lastname"> Enter lastname: </label>
-    <input type="text" th:field="*{lastname}" id="lastname"/>
-    <div style="color:red" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Lastname Error</div>
     <br/>
     <label for="age"> Enter age: </label>
     <input type="text" th:field="*{age}" id="age"/>
     <div style="color:red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</div>
     <br/>
-    <label for="email"> Enter email: </label>
-    <input type="text" th:field="*{email}" id="email"/>
-    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">E-mail Error</div>
+    <label for="workPosition"> Enter work position: </label>
+    <input type="text" th:field="*{workPosition}" id="workPosition"/>
+    <div style="color:red" th:if="${#fields.hasErrors('workPosition')}" th:errors="*{workPosition}">Work position Error</div>
     <br/>
     <input type="submit" value="Update!">
 </form>
