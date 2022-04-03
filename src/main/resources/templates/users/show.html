@@ -5,14 +5,15 @@
     <title>Show</title>
 </head>
 <body>
+<a href="/logout">Logout</a>
 
 <p th:text="${user.getName() + ', ' + user.getAge()+ ', ' + user.getWorkPosition}">VALUE</p>
 <p th:text="${'Work position: ' + user.getWorkPosition}">VALUE</p>
 <p th:text="${user.getId()}">VALUE</p>
 
-<a th:href="@{/users/{id}/edit(id=${user.getId()})}">Edit</a>
+<a th:href="@{/users/admin/{id}/edit(id=${user.getId()})}">Edit</a>
 
-<form th:method="POST" th:action="@{/users/delete/{id}(id=${user.getId()})}">
+<form th:method="POST" th:action="@{/users/admin/delete/{id}(id=${user.getId()})}">
     <input type="submit" value="Delete"/>
 </form>
 
